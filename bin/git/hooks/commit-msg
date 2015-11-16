@@ -1,0 +1,12 @@
+#!/usr/bin/env ruby
+message_file = ARGV[0]
+message = File.read(message_file)
+
+# enforced custom commit message format
+$regex = /(\[)((?:[a-z][a-z]+))(\])(\()((?:[a-z][a-z0-9]*))(:)(\d+)(\))(\s+)((?:[a-z][a-z0-9 ]*))/i
+
+if !$regex.match(message)
+    puts "[POLICY] Your message is not formatted correctly"
+    puts "Follow this format: [type](md:00000) Descriptive title for the commit"
+    exit 1
+end
