@@ -3,6 +3,8 @@
 HOOK_NAMES="applypatch-msg pre-applypatch post-applypatch pre-commit prepare-commit-msg commit-msg post-commit pre-rebase post-checkout post-merge pre-receive update post-receive post-update pre-auto-gc pre-push"
 # assuming the script is in a bin directory, one level into the repo
 HOOK_DIR=$(git rev-parse --show-toplevel)/.git/hooks
+WORKFLOW_DIR=$(git rev-parse --show-toplevel)/wordpress-workflow
+CUSTOM_HOOKS_DIR=$WORKFLOW_DIR/provision/githooks/bin/git/hooks
 
 for hook in $HOOK_NAMES; do
     # If the hook already exists, is a file, and is not a symlink
@@ -12,6 +14,6 @@ for hook in $HOOK_NAMES; do
     # create the symlink, overwriting the file if it exists
     # probably the only way this would happen is if you're using an old version of git
     # -- back when the sample hooks were not executable, instead of being named ____.sample
-    ln -s -f ../../bin/git/hooks-wrapper $HOOK_DIR/$hook
+    ln -s -f $CUSTOM_HOOKS_DIR/$hook $HOOK_DIR/$hook
 done
 
