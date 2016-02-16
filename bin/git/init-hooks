@@ -3,7 +3,7 @@
 HOOK_NAMES="applypatch-msg pre-applypatch post-applypatch pre-commit prepare-commit-msg commit-msg post-commit pre-rebase post-checkout post-merge pre-receive update post-receive post-update pre-auto-gc pre-push"
 # assuming the script is in a bin directory, one level into the repo
 HOOK_DIR=$(git rev-parse --show-toplevel)/.git/hooks
-WORKFLOW_DIR=$(git rev-parse --show-toplevel)/wordpress-workflow
+WORKFLOW_DIR=$(git rev-parse --show-toplevel)/chuy
 CUSTOM_HOOKS_DIR=$WORKFLOW_DIR/provision/githooks/bin/git/hooks
 
 for hook in $HOOK_NAMES; do
